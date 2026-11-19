@@ -165,20 +165,20 @@
 / {
     /*
      * 自動マウスレイヤー (takashicompany 方式)
-     * 元実装の値は Keyball 既定 CPI(500) 基準なので、PAW3222 既定 1558 CPI に合わせて約3倍している。
-     *   to_clickable_movement 50      -> activation-movement 150 (&aml_thr_inc / &aml_thr_dec で ±15、NVS 保存)
+     * 元実装の値は Keyball 既定 CPI(500) 基準なので、PMW3610 既定 1000 CPI (Rev3) に合わせて2倍している。
+     *   to_clickable_movement 50      -> activation-movement 100 (&aml_thr_inc / &aml_thr_dec で ±10、NVS 保存)
      *   WAITING のリセット 50ms       -> activation-window-ms 50
-     *   after_click_lock_movement 30  -> click-lock-movement 90
+     *   after_click_lock_movement 30  -> click-lock-movement 60
      *   to_reset_time 500ms           -> keymap / overlay の <&zip_aml 6 500> の第2引数
      *   KC_MY_SCR                     -> &mo 7 (scroll-layer)
      */
     zip_aml: zip_aml {
         compatible = "zmk,input-processor-aml";
         #input-processor-cells = <2>;
-        activation-movement = <150>;
+        activation-movement = <100>;
         activation-window-ms = <50>;
-        activation-gap-ms = <10>;
-        click-lock-movement = <90>;
+        activation-gap-ms = <20>;
+        click-lock-movement = <60>;
         scroll-layer = <7>;
     };
 
@@ -227,14 +227,14 @@
             compatible = "zmk,behavior-aml";
             #binding-cells = <0>;
             cmd = <3>;
-            step = <15>;
+            step = <10>;
         };
 
         aml_thr_dec: aml_thr_dec {
             compatible = "zmk,behavior-aml";
             #binding-cells = <0>;
             cmd = <4>;
-            step = <15>;
+            step = <10>;
         };
 
         scrl_inv_tog: scrl_inv_tog {
