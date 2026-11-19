@@ -84,6 +84,18 @@
             display-name = "Auto Mouse Toggle";
         };
 
+        studio_aml_thr_inc: studio_aml_thr_inc {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&aml_thr_inc>;
+            display-name = "Auto Mouse Threshold +";
+        };
+
+        studio_aml_thr_dec: studio_aml_thr_dec {
+            compatible = "zmk,behavior-metadata";
+            behavior = <&aml_thr_dec>;
+            display-name = "Auto Mouse Threshold -";
+        };
+
         studio_scrl_inv_tog: studio_scrl_inv_tog {
             compatible = "zmk,behavior-metadata";
             behavior = <&scrl_inv_tog>;

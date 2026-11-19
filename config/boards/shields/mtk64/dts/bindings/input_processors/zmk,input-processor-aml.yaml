@@ -1,7 +1,9 @@
 # Copyright (c) 2026 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-description: Input Processor for Auto Mouse Layer with toggle support
+description: |
+  Auto Mouse Layer (takashicompany 方式).
+  param1 = 有効にするレイヤー, param2 = CLICKABLE 状態のタイムアウト (ms)
 
 compatible: "zmk,input-processor-aml"
 
@@ -12,10 +14,40 @@ properties:
     type: int
     required: false
     default: 0
-    description: Time in milliseconds that must pass after the last keystroke before the layer can be toggled
+    description: 最後のキー入力からこの時間が経つまではレイヤーを有効にしない (0 で無効)
+
+  activation-movement:
+    type: int
+    required: false
+    default: 1
+    description: WAITING 中の累積移動量 (|x|+|y| のセンサーカウント) がこの値に達したらレイヤーを有効にする。実行時に &aml_thr_inc / &aml_thr_dec で変更可 (NVS 保存)
+
+  activation-window-ms:
+    type: int
+    required: false
+    default: 50
+    description: WAITING 開始からこの時間を過ぎた後に動きが途切れたら累積をリセットする
+
+  activation-gap-ms:
+    type: int
+    required: false
+    default: 10
+    description: この時間以上モーションが来なければ「動きが途切れた」とみなす
+
+  click-lock-movement:
+    type: int
+    required: false
+    default: 0
+    description: クリック押下直後、この移動量ぶんのボール入力を無視する (after_click_lock_movement)
+
+  scroll-layer:
+    type: int
+    required: false
+    default: -1
+    description: このレイヤーが有効な間は SCROLLING とみなし、タイムアウトもキー入力による解除も行わない
 
   excluded-positions:
     type: array
     required: false
     default: []
-    description: Array of key positions that will NOT trigger layer deactivation when pressed
+    description: 指定した場合、これ以外のキー位置の押下でもレイヤーを解除する (通常は空でよい。修飾キー以外のキーコード入力で解除される)

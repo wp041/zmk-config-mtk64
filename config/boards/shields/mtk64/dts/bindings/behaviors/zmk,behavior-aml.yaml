@@ -15,8 +15,17 @@ properties:
       - 0 # TOG
       - 1 # ON
       - 2 # OFF
+      - 3 # THR_INC
+      - 4 # THR_DEC
     description: |
       Command type:
       0: Toggle AML state
       1: Turn AML ON
       2: Turn AML OFF
+      3: Increase activation movement threshold
+      4: Decrease activation movement threshold
+  step:
+    type: int
+    required: false
+    default: 15
+    description: THR_INC / THR_DEC の 1 回あたりの増減量
