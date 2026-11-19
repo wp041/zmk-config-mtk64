@@ -19,10 +19,13 @@ enum aml_cmd {
     AML_CMD_TOG = 0,
     AML_CMD_ON  = 1,
     AML_CMD_OFF = 2,
+    AML_CMD_THR_INC = 3, // KC_TO_CLICKABLE_INC 相当
+    AML_CMD_THR_DEC = 4, // KC_TO_CLICKABLE_DEC 相当
 };
 
 struct behavior_aml_config {
     enum aml_cmd cmd;
+    int16_t step;
 };
 
 static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
@@ -42,6 +45,12 @@ static int on_keymap_binding_pressed(struct zmk_behavior_binding *binding,
         break;
     case AML_CMD_OFF:
         zmk_aml_set_enabled(false);
+        break;
+    case AML_CMD_THR_INC:
+        zmk_aml_adjust_threshold(cfg->step);
+        break;
+    case AML_CMD_THR_DEC:
+        zmk_aml_adjust_threshold(-cfg->step);
         break;
     }
 
@@ -65,6 +74,7 @@ static const struct behavior_driver_api behavior_aml_driver_api = {
 #define AML_BEHAVIOR_INIT(n)                                                   \
     static const struct behavior_aml_config behavior_aml_config_##n = {        \
         .cmd = DT_INST_PROP(n, cmd),                                           \
+        .step = DT_INST_PROP_OR(n, step, 15),                                  \
     };                                                                         \
     BEHAVIOR_DT_INST_DEFINE(n, NULL, NULL, NULL, &behavior_aml_config_##n,     \
                             POST_KERNEL, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,  \

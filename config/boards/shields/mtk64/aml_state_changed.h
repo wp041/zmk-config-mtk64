@@ -6,6 +6,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <zephyr/kernel.h>
 #include <zmk/event_manager.h>
 
@@ -18,3 +19,6 @@ ZMK_EVENT_DECLARE(zmk_aml_state_changed);
 bool zmk_aml_is_enabled(void);
 void zmk_aml_set_enabled(bool enabled);
 void zmk_aml_toggle(void);
+
+int16_t zmk_aml_get_threshold(void);
+void zmk_aml_adjust_threshold(int16_t delta);

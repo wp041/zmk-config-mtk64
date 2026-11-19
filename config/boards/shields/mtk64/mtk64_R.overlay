@@ -31,7 +31,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&trackball>;
-        input-processors = <&zip_aml 6 5000>, <&zip_dynamic_rate_limit 1 8>;
+        input-processors = <&zip_aml 6 500>, <&zip_dynamic_rate_limit 1 8>;
 
         snipe {
             layers = <1>;
@@ -42,6 +42,14 @@
         scroll {
             layers = <3>;
             input-processors = <&zip_xy_to_scroll_mapper>, <&zip_scroll_inverter>, <&zip_scroll_scaler 1 64>;
+            process-next;
+        };
+
+        // 自動マウスレイヤー中のスクロールキー (KC_MY_SCR 相当, &mo 7)
+        // 元実装: 100 カウントで 1 ノッチ @500CPI -> 1558CPI で約 300
+        aml_scroll {
+            layers = <7>;
+            input-processors = <&zip_scroll_axis_lock>, <&zip_xy_to_scroll_mapper>, <&zip_scroll_inverter>, <&zip_scroll_scaler 1 300>;
             process-next;
         };
     };
