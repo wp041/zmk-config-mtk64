@@ -1,7 +1,7 @@
 # Copyright (c) 2026 The ZMK Contributors
 # SPDX-License-Identifier: MIT
 
-description: スクロール時に縦横どちらか優勢な軸だけを通す (縦優先: |y|*2 > |x|)
+description: "スクロール時に縦横どちらか優勢な軸だけを通す (縦優先 |y|*2 > |x|)"
 
 compatible: "zmk,input-processor-scroll-axis-lock"
 
