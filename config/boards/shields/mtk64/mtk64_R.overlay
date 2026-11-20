@@ -46,10 +46,10 @@
         };
 
         // 自動マウスレイヤー中のスクロールキー (KC_MY_SCR 相当, &mo 7)
-        // 元実装: 100 カウントで 1 ノッチ @500CPI -> 1558CPI で約 300 だったが速すぎ、600は遅すぎたので 400
+        // 元実装: 100 カウントで 1 ノッチ @500CPI -> 1558CPI で約 300 だったが速すぎ、600・400は遅すぎたので 200
         aml_scroll {
             layers = <7>;
-            input-processors = <&zip_scroll_axis_lock>, <&zip_xy_to_scroll_mapper>, <&zip_scroll_inverter>, <&zip_scroll_scaler 1 400>;
+            input-processors = <&zip_scroll_axis_lock>, <&zip_xy_to_scroll_mapper>, <&zip_scroll_inverter>, <&zip_scroll_scaler 1 200>;
             process-next;
         };
     };
