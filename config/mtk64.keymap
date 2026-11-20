@@ -65,7 +65,7 @@
             >;
 
             sensor-bindings = <
-                &scroll_up_down SCRL_UP SCRL_DOWN // 右エンコーダー(sensor0): 縦スクロール
+                &inc_dec_kp LEFT RIGHT            // 右エンコーダー(sensor0): ←/→
                 &inc_dec_kp C_VOL_DN C_VOL_UP   // 左エンコーダー(sensor1): 音量
             >;
         };
