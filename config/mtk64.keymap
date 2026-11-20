@@ -26,6 +26,14 @@
             bindings = <&msc>, <&msc>;
             tap-ms = <20>; // スクロールのタップ時間
         };
+        // エンコーダー押し込み: 単押し=再生/停止、押し込んだまま回す=L4
+        enc_push: enc_push {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <150>;
+            bindings = <&mo>, <&kp>;
+        };
         // 水平スクロール用のbehaviorの設定
         scroll_left_right: behavior_sensor_rotate_mouse_wheel_left_right {
             compatible = "zmk,behavior-sensor-rotate-var";
@@ -50,15 +58,15 @@
 &kp F19    &kp A     &kp S   &kp D   &kp F   &kp G                                       &kp H   &kp J   &kp K      &kp L    &kp JP_SEMI  &kp ENTER
 &kp LSHFT  &kp Z     &kp X   &kp C   &kp V   &kp B   &tog 2                 &mo 1   &kp N   &kp M   &kp COMMA  &kp DOT  &kp JP_SLASH &kp JP_BSLH
 &kp F20    &kp LCTRL                 &kp LALT  &kp JP_MHEN          &kp JP_HENK      &kp F13                                   &kp LEFT     &kp RIGHT
-                 &tog 2 &kp ENTER                &kp SPACE          &kp SPACE                   &kp JP_HENK &kp F13
-                                                 &mo 4          &mo 4
+                 &enc_push 4 C_PP &enc_push 4 C_PP                &kp SPACE          &kp SPACE                   &enc_push 4 C_PP &enc_push 4 C_PP
+                                                 &kp SPACE          &kp SPACE
           &mo 1  &mo 2  &mo 3                                                                   &mo 1     &mo 2   &mo 3
                                                  &mo 1    &mo 2     &mo 3  
             >;
 
             sensor-bindings = <
-                &inc_dec_kp C_VOL_DN C_VOL_UP   // 左エンコーダー: 音量
-                &scroll_up_down SCRL_UP SCRL_DOWN // 右エンコーダー: 縦スクロール
+                &scroll_up_down SCRL_UP SCRL_DOWN // 右エンコーダー(sensor0): 縦スクロール
+                &inc_dec_kp C_VOL_DN C_VOL_UP   // 左エンコーダー(sensor1): 音量
             >;
         };
 
@@ -128,8 +136,8 @@
                                                &trans &trans &trans
             >;
             sensor-bindings = <
-                &inc_dec_kp C_PREV C_NEXT        // 押し込み中 左: 曲送り/戻し
                 &scroll_left_right SCRL_LEFT SCRL_RIGHT // 押し込み中 右: 横スクロール
+                &inc_dec_kp C_PREV C_NEXT        // 押し込み中 左: 曲送り/戻し
             >;
         };
 
