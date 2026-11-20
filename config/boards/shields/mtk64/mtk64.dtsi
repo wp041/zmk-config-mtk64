@@ -177,7 +177,7 @@
         #input-processor-cells = <2>;
         activation-movement = <150>;
         activation-window-ms = <50>;
-        activation-gap-ms = <10>;
+        activation-gap-ms = <20>;
         click-lock-movement = <90>;
         scroll-layer = <7>;
     };

@@ -49,8 +49,8 @@
 &kp TAB    &kp Q     &kp W   &kp E   &kp R   &kp T                                       &kp Y   &kp U   &kp I      &kp O    &kp P        &kp JP_AT
 &kp F19    &kp A     &kp S   &kp D   &kp F   &kp G                                       &kp H   &kp J   &kp K      &kp L    &kp JP_SEMI  &kp ENTER
 &kp LSHFT  &kp Z     &kp X   &kp C   &kp V   &kp B   &kp SPACE                 &kp F14   &kp N   &kp M   &kp COMMA  &kp DOT  &kp JP_SLASH &kp JP_BSLH
-&kp F20    &kp LCTRL                 &kp LALT  &kp JP_MHEN          &kp SPACE  &kp JP_HENK                                 &kp LEFT     &kp RIGHT
-                 &tog 2 &kp ENTER                &lt 3 LANG1        &lt 1 ENTER                 &kp F13   &kp K_APP
+&kp F20    &kp LCTRL                 &kp LALT  &kp JP_MHEN          &mo 1      &kp K_APP                                   &kp LEFT     &kp RIGHT
+                 &tog 2 &kp ENTER                &kp SPACE          &kp SPACE                   &kp JP_HENK &kp F13
                                                  &kp LG(C)          &kp LG(V)
           &mo 1  &mo 2  &mo 3                                                                   &mo 1     &mo 2   &mo 3
                                                  &mo 1    &mo 2     &mo 3  
