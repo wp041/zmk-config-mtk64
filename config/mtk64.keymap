@@ -67,6 +67,24 @@
 
 / {
 
+
+    // 応急処置: 基板の不具合で Enter / BS と同時に @ が誤入力されるのを打ち消す
+    combos {
+        compatible = "zmk,combos";
+        ghost_at_enter {
+            timeout-ms = <30>;
+            key-positions = <23 35>;
+            bindings = <&kp ENTER>;
+            layers = <0>;
+        };
+        ghost_at_bspc {
+            timeout-ms = <30>;
+            key-positions = <23 11>;
+            bindings = <&kp BSPC>;
+            layers = <0>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
